@@ -2,7 +2,10 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
+import java.util.List;
 
 @Entity
 public class Alien {
@@ -11,8 +14,8 @@ public class Alien {
     private int aid;
     private String name;
     private String tech;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy = "alien")
+    private List<Laptop> laptops;
 
     @Override
     public String toString() {
@@ -20,16 +23,27 @@ public class Alien {
                 "aid=" + aid +
                 ", name='" + name + '\'' +
                 ", tech='" + tech + '\'' +
-                ", laptop=" + laptop +
+                ", laptops=" + laptops +
                 '}';
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
+
+    public Laptop getLaptop(int index) {
+        if (index < 0 || index >= laptops.size()) {
+            return null;
+        }
+        return laptops.get(index);
     }
 
     public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+        this.laptops.add(laptop);
     }
 
     public String getName() {
