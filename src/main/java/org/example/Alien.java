@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -14,7 +11,7 @@ public class Alien {
     private int aid;
     private String name;
     private String tech;
-    @OneToMany(mappedBy = "alien")
+    @ManyToMany
     private List<Laptop> laptops;
 
     @Override
