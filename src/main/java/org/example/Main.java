@@ -83,7 +83,11 @@ public class Main {
         for (Object[] obj : list) {
             System.out.println(obj[0] + " " + obj[1]);
         }
+
         System.out.println(list);
+
+        Laptop laptop = session1.getReference(Laptop.class, 1); //lazy loading
+        System.out.println(laptop);
         session1.close();
         sf.close();
     }
