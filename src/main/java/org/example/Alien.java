@@ -11,7 +11,7 @@ public class Alien {
     private int aid;
     private String name;
     private String tech;
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Laptop> laptops;
 
     @Override

@@ -13,6 +13,6 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 <!--        hbm2ddl : Hibernate mapping to Data Definition Language-->
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sq;">true</property>
+        <property name="hibernate.format_sql">true</property>
     </session-factory>
 </hibernate-configuration>
