@@ -67,28 +67,38 @@ public class Main {
 
         session.close();
 
-        Session session1 = sf.openSession();
+//        Session session1 = sf.openSession();
+//
+//        Alien a5 = session1.find(Alien.class, 101);
+//
+//        System.out.println(a5);
+//
+//        String brand = "Asus";
+//        int ram = 16;
+//        Query query = session1.createQuery("SELECT brand, model FROM Laptop WHERE ram=?1 AND brand=?2");
+//        query.setParameter(1, ram);
+//        query.setParameter(2, brand);
+//
+//        List<Object[]> list = query.getResultList();
+//        for (Object[] obj : list) {
+//            System.out.println(obj[0] + " " + obj[1]);
+//        }
+//
+//        System.out.println(list);
+//
+//        Laptop laptop = session1.getReference(Laptop.class, 1); //lazy loading
+//        System.out.println(laptop);
+//        session1.close();
+        System.out.println("=====================================================");
 
-        Alien a5 = session1.find(Alien.class, 101);
-
-        System.out.println(a5);
-
-        String brand = "Asus";
-        int ram = 16;
-        Query query = session1.createQuery("SELECT brand, model FROM Laptop WHERE ram=?1 AND brand=?2");
-        query.setParameter(1, ram);
-        query.setParameter(2, brand);
-
-        List<Object[]> list = query.getResultList();
-        for (Object[] obj : list) {
-            System.out.println(obj[0] + " " + obj[1]);
-        }
-
-        System.out.println(list);
-
-        Laptop laptop = session1.getReference(Laptop.class, 1); //lazy loading
-        System.out.println(laptop);
-        session1.close();
+        Session session2 = sf.openSession();
+        Laptop laptop1 = session2.find(Laptop.class, 1);
+        System.out.println(laptop1);
+        session2.close();
+        Session session3 = sf.openSession();
+        Laptop laptop2 = session3.find(Laptop.class, 1);
+        System.out.println(laptop2);
+        session3.close();
         sf.close();
     }
 }
